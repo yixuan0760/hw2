@@ -20,12 +20,12 @@ char table[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
 
 
 
-int sample = 1500;
+int sample = 1000;
 
 int i,j=0,fre,a,b,c;
 
 
-float ADCdata[1500],fr[2],freq,k;
+float ADCdata[1000],fr[2],freq,k;
 
 
 int main(){
@@ -38,12 +38,12 @@ int main(){
 
   }
 
-  /*for (i = 0; i < sample; i++){
+  for (i = 0; i < sample; i++){
 
     pc.printf("%1.3f\r\n", ADCdata[i]);
 
-    wait(0.5);
-  }*/
+    wait(0.05);
+  }
 
   for(i=0; i<sample && j<2; i++){
     if(ADCdata[i]<0.01){
@@ -53,7 +53,6 @@ int main(){
   }
   freq=1000.0/(fr[1]-fr[0]);
   fre=int(freq);
-  pc.printf("%d", fre);
   while(1){
     if( Switch == 1 ){
       greenLED = 0;
